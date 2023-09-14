@@ -49,7 +49,7 @@
   <script>
    const urlParams = new URLSearchParams(window.location.search);
   const verificationLink = urlParams.get('verificationLink');
-
+  console.log(verificationLink);
   // Lakukan permintaan fetch ke endpoint verifikasi
   fetch(verificationLink, {
     method: 'PATCH',
