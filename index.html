@@ -47,31 +47,27 @@
   </div>
 
   <script>
-    document.getElementById("verifyButton").addEventListener("click", function (event) {
-      event.preventDefault(); 
-      const verificationUrl = document.getElementById("verifyButton").getAttribute("href");
-      
-      fetch(verificationUrl, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json', 
-        },
-        
-        body: JSON.stringify({
-          
-        }),
-      })
-        .then(function (response) {
-          if (response.status === 200) {
-            alert("Email successfully verified!");
-          } else {
-            alert("Error verifying email. Please try again later.");
-          }
-        })
-        .catch(function (error) {
-          console.error('Error:', error);
-          alert("An error occurred while verifying email. Please try again later.");
-        });
+   const urlParams = new URLSearchParams(window.location.search);
+  const verificationLink = urlParams.get('verificationLink');
+
+  // Lakukan permintaan fetch ke endpoint verifikasi
+  fetch(verificationLink, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  })
+    .then(function (response) {
+      if (response.status === 200) {
+        alert("Email successfully verified!");
+      } else {
+        alert("Error verifying email. Please try again later.");
+      }
+    })
+    .catch(function (error) {
+      console.error('Error:', error);
+      alert("An error occurred while verifying email. Please try again later.");
     });
   </script>
 </body>
